@@ -10,15 +10,71 @@
 <script>
 $(document).ready(
 	function(){
-		$("#cal").click(
+		var num1 = 0;
+		var num2 = 0;
+		var total = 0;
+		
+		var add = function(){
+					 num1 = parseInt($("#num1").val());
+					 num2 = parseInt($("#num2").val());
+					 total = num1 + num2;	
+		}
+		
+		var subtract = function(){
+		
+					 num1 = parseInt($("#num1").val());
+					 num2 = parseInt($("#num2").val());
+					 total = num1 - num2;
+		}
+		
+		var mult = function(){
+		
+					 num1 = parseInt($("#num1").val());
+					 num2 = parseInt($("#num2").val());
+					 total = num1 * num2;
+		}
+		
+		var divide = function(){
+		
+					 num1 = parseInt($("#num1").val());
+					 num2 = parseInt($("#num2").val());
+					 total = num1 / num2;
+		}
+		
+		//this is add
+		$("#add").click(
 			function(){
-					var num1 = parseInt($("#num1").val());
-					var num2 = parseInt($("#num2").val());
-					var total = num1 + num2;
+					add();
+					
 					$("#display").html("<h1>"+total+"</h1>");
 		
 			}
 		);
+		
+		$("#sub").click(
+		function() {
+					subtract();
+					
+					$("#display").html("<h1>"+total+"</h1>");
+		}
+		);
+		
+		
+			$("#mult").click(
+		function() {
+			mult();
+		$("#display").html("<h1>"+total+"</h1>")
+		}
+		);
+		
+				$("#divide").click(
+		function() {
+			divide();
+		$("#display").html("<h1>"+total+"</h1>")
+		}
+		);
+		
+		
 	}
 );
 </script>     
@@ -26,6 +82,9 @@ $(document).ready(
 <body>
 	<input id='num1' type='text' plaaceholder='the 1st #'/>
     <button id="add">+</button>
+    <button id="sub">-</button>
+    <button id="mult">*</button>
+    <button id="divide">/</button>
     <input id='num2' type='text' plaaceholder='the 2st #'/>
     <button id="calc">Calculate</button>
 	<div id="display">
