@@ -14,78 +14,154 @@ $(document).ready(
 		var num2 = 0;
 		var total = 0;
 		
-		var add = function(){
+		var showNumber = function(){
+		$("#display").html("<h1>"+total+"</h1>");
+		$("#display").animate(
+		{
+			"bottom":"100px"	
+		})
+		}
+		var getNumber = function(){
+			
 					 num1 = parseInt($("#num1").val());
 					 num2 = parseInt($("#num2").val());
+					 
+		}
+			
+			
+			
+		
+		var add = function(){
+					 getNumber();
 					 total = num1 + num2;	
 		}
 		
 		var subtract = function(){
 		
-					 num1 = parseInt($("#num1").val());
-					 num2 = parseInt($("#num2").val());
+					 getNumber();
 					 total = num1 - num2;
 		}
 		
 		var mult = function(){
 		
-					 num1 = parseInt($("#num1").val());
-					 num2 = parseInt($("#num2").val());
+					getNumber();
 					 total = num1 * num2;
 		}
 		
 		var divide = function(){
 		
-					 num1 = parseInt($("#num1").val());
-					 num2 = parseInt($("#num2").val());
+					getNumber();
 					 total = num1 / num2;
 		}
 		
-		//this is add
-		$("#add").click(
+	
+		$("#topleft").click(
 			function(){
-					add();
-					
-					$("#display").html("<h1>"+total+"</h1>");
-		
+				add();
+				showNumber();
 			}
-		);
+			);
+			
+		$("#topright").click(
+			function(){
+				subtract();
+				showNumber();
+			}
+			);
+			
+		$("#bottomleft").click(
+			function(){
+				mult();
+				showNumber();
+			}
+			);		
 		
-		$("#sub").click(
-		function() {
-					subtract();
-					
-					$("#display").html("<h1>"+total+"</h1>");
-		}
-		);
-		
-		
-			$("#mult").click(
-		function() {
-			mult();
-		$("#display").html("<h1>"+total+"</h1>")
-		}
-		);
-		
-				$("#divide").click(
-		function() {
-			divide();
-		$("#display").html("<h1>"+total+"</h1>")
-		}
-		);
-		
+		$("#bottomright").click(
+			function(){
+				divide();
+				showNumber();
+			}
+			);
 		
 	}
 );
 </script>     
 
+<style>
+
+#topleft {
+	position:fixed;
+	left:0;
+	top:0;
+	width:50%;
+	height:50%;
+	background:#d4d;
+}
+
+#topright {
+	position:fixed;
+	top:0;
+	right:0;
+	width:50%;
+	height:50%;
+	background:green;
+}
+
+#bottomleft {
+	position:fixed;
+	left:0;
+	bottom:0;
+	width:50%;
+	height:50%;
+	background:blue;
+}
+
+#bottomright {
+	position:fixed;
+	bottom:0;
+	right:0;
+	width:50%;
+	height:50%;
+	background:red;
+}
+
+#numbers {
+	position:fixed;
+	top:40%;
+	left:30%;
+	z-index:1		;
+}
+	
+#numbers input {
+	height:50px;
+	font-size:27.27pt;
+}
+
+#display {
+	position:fixed;
+	bottom:-100px;
+	left:0;
+	text-align:center;
+	font-size:16pt;
+	background:aqua;
+	height:100px;
+	width:100%;
+	z-index:1;
+	
+</style>
 <body>
+	<div id="numbers">
 	<input id='num1' type='text' plaaceholder='the 1st #'/>
-    <button id="add">+</button>
-    <button id="sub">-</button>
-    <button id="mult">*</button>
-    <button id="divide">/</button>
-    <input id='num2' type='text' plaaceholder='the 2st #'/>
+        <input id='num2' type='text' plaaceholder='the 2st #'/>
+	</div>
+    <div id="topleft">
+    </div>
+    <div id="bottomleft">
+    </div>
+    <div id="bottomright">
+    </div>
+    <div id="topright">
+    </div>
     <button id="calc">Calculate</button>
 	<div id="display">
     </div>
